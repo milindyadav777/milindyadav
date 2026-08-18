@@ -1,4 +1,5 @@
 import BookCarousel from "./BookCarousel";
+import ThemeToggle from "./ThemeToggle";
 
 const capabilities = [
   "Platform engineering",
@@ -57,12 +58,15 @@ export default function Home() {
           <span className="brand-mark" aria-hidden="true">my</span>
           <span>milindyadav</span>
         </a>
-        <nav aria-label="Main navigation">
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="#reading">Reading</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        <div className="header-actions">
+          <nav aria-label="Main navigation">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#reading">Reading</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <ThemeToggle />
+        </div>
       </header>
 
       <section className="hero" id="top">

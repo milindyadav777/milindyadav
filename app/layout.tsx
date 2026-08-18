@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const themeScript = `
+  (function () {
+    try {
+      var saved = localStorage.getItem("milindyadav-theme");
+      var system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      var theme = saved === "dark" || saved === "light" ? saved : system;
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    } catch (_) {}
+  })();
+`;
+
 export const metadata: Metadata = {
   title: "milindyadav — Platform & DevOps Engineer",
   description:
@@ -20,7 +32,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );
