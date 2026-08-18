@@ -32,6 +32,8 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Build the static website
         run: GITHUB_PAGES_BUILD=true NEXT_PUBLIC_BASE_PATH=/milindyadav npx next build
