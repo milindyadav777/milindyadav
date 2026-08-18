@@ -13,33 +13,33 @@ const capabilities = [
 const caseStudies = [
   {
     number: "01",
-    eyebrow: "Observability platform",
-    title: "Making failed builds explain themselves",
+    eyebrow: "Current observability project",
+    title: "Bringing Jenkins and machine telemetry into one view",
     description:
-      "Designed a unified observability ecosystem for Jenkins jobs, controllers, agents, Kubernetes workloads and bare-metal machines—correlating metrics, logs and traces around a single failed build.",
+      "I am building an observability setup for Jenkins controllers, agents, jobs, Kubernetes workloads and bare-metal machines. The stack uses Prometheus, Loki, Tempo, Grafana, Alloy and OpenTelemetry.",
     outcome:
-      "A foundation for faster incident investigation and an AI-assisted debugging workflow.",
+      "The next step is reliable correlation across build telemetry, followed by an assistant that can investigate failed builds.",
     tags: ["Grafana", "Prometheus", "Loki", "Tempo", "Alloy", "OpenTelemetry"],
   },
   {
     number: "02",
-    eyebrow: "Engineering productivity",
-    title: "Replacing a costly quality workflow",
+    eyebrow: "Security tooling",
+    title: "Replacing a licensed security scanner with an in-house tool",
     description:
-      "Built an internal quality framework that automated repeatable validation, integrated with existing delivery pipelines and removed dependence on a costly third-party tool.",
+      "Built an in-house Python security-scanning framework that kept the required checks and fit the team's existing workflow.",
     outcome:
-      "Reduced recurring tooling cost while giving the engineering team more control over its workflow.",
-    tags: ["Python", "Jenkins", "Automation", "CI/CD"],
+      "Removed approximately USD 12,000 in annual licensing cost.",
+    tags: ["Python", "Security", "Automation"],
   },
   {
     number: "03",
-    eyebrow: "Data & application platform",
-    title: "Turning pipeline data into decisions",
+    eyebrow: "Data engineering",
+    title: "Calculation pipelines and reporting",
     description:
-      "Implemented calculation logic with Spark data pipelines, shaped data-lake schemas and exposed operational insights through OpenSearch dashboards and a Looker proof of concept.",
+      "Implemented performance and attribution calculation logic in Spark data pipelines and contributed to data-lake schema work. Superset was used for dashboards after an initial Looker and LookML proof of concept.",
     outcome:
-      "Connected data processing, durable storage and decision-ready visualisation in one system.",
-    tags: ["Spark", "Data lake", "OpenSearch", "LookML"],
+      "The work covered calculation logic, storage design and reporting.",
+    tags: ["Spark", "Data lake", "Superset", "LookML"],
   },
 ];
 
@@ -71,10 +71,10 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="kicker"><span className="status-dot" /> Open to senior engineering opportunities</p>
-          <h1>I build systems that help engineers <em>move with confidence.</em></h1>
+          <p className="kicker"><span className="status-dot" /> Open to senior backend, platform, DevOps and SRE roles</p>
+          <h1>I build platforms that are easier to <em>run, debug and change.</em></h1>
           <p className="hero-summary">
-            Platform and DevOps engineer with 5+ years across software, infrastructure and semiconductor engineering—focused on observable systems, dependable delivery and elegant automation.
+            Platform and DevOps engineer with 5+ years of software engineering experience across backend systems, CI/CD, Kubernetes, cloud infrastructure and observability.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↘</span></a>
@@ -84,17 +84,17 @@ export default function Home() {
 
         <div className="system-card" aria-label="A simplified view of Milind's engineering focus">
           <div className="system-card-header">
-            <span>system / engineering-impact</span>
-            <span className="live-label">LIVE</span>
+            <span>current focus / build-observability</span>
+            <span className="live-label">IN PROGRESS</span>
           </div>
           <div className="system-flow">
-            <div className="flow-node"><span>01</span><strong>Signals</strong><small>logs · metrics · traces</small></div>
+            <div className="flow-node"><span>01</span><strong>Job evidence</strong><small>logs · metrics · traces</small></div>
             <div className="flow-line"><i /></div>
-            <div className="flow-node active"><span>02</span><strong>Understanding</strong><small>context · correlation · cause</small></div>
+            <div className="flow-node active"><span>02</span><strong>System context</strong><small>controller · agent · machine</small></div>
             <div className="flow-line"><i /></div>
-            <div className="flow-node"><span>03</span><strong>Action</strong><small>automate · recover · improve</small></div>
+            <div className="flow-node"><span>03</span><strong>Investigation</strong><small>correlate · explain · fix</small></div>
           </div>
-          <p className="system-note"><span>→</span> The goal is not more telemetry. It is better engineering decisions.</p>
+          <p className="system-note"><span>→</span> A failed build should come with enough evidence to understand what happened.</p>
         </div>
       </section>
 
@@ -106,9 +106,9 @@ export default function Home() {
         <div className="section-heading">
           <div>
             <p className="section-index">01 / Selected work</p>
-            <h2>Systems with a measurable reason to exist.</h2>
+            <h2>A few things I have built or am building.</h2>
           </div>
-          <p>Representative work, described without proprietary implementation details.</p>
+          <p>I have kept the descriptions general where the implementation is proprietary.</p>
         </div>
 
         <div className="case-list">
@@ -133,18 +133,18 @@ export default function Home() {
       <section className="about section" id="about">
         <div className="about-copy">
           <p className="section-index">02 / How I work</p>
-          <h2>I like hard problems at the boundary between software and infrastructure.</h2>
+          <h2>Most of my work sits where code, delivery systems and infrastructure meet.</h2>
           <p>
-            My path through digital design, system validation, backend development and DevOps gives me a broad view of how complex systems fail—and how teams experience those failures. I turn that perspective into platforms that are easier to operate, debug and evolve.
+            I have worked in backend development, system software validation and DevOps and infrastructure roles. That path has made me comfortable moving between application code, pipelines, cloud services, Kubernetes and the machines underneath them.
           </p>
           <p>
-            I care about strong fundamentals, direct communication and solving the real constraint instead of polishing the nearest symptom.
+            I like problems where a failure crosses layers. I prefer to look at the evidence first, understand the failing path and then change the smallest part that actually solves the problem.
           </p>
         </div>
         <div className="principles">
-          <div><span>01</span><strong>Start with the failure mode</strong><p>Design from operational reality, not just the happy path.</p></div>
-          <div><span>02</span><strong>Automate understanding</strong><p>Reduce the time between a signal and a confident decision.</p></div>
-          <div><span>03</span><strong>Leave a clearer system</strong><p>Good engineering improves both the platform and its mental model.</p></div>
+          <div><span>01</span><strong>Start with evidence</strong><p>Reproduce the issue and understand the failing path.</p></div>
+          <div><span>02</span><strong>Automate repeated work</strong><p>If a team keeps doing it by hand, I look for a safe way to automate it.</p></div>
+          <div><span>03</span><strong>Make systems easier to own</strong><p>Write down the reasoning and leave the next person a clearer path.</p></div>
         </div>
       </section>
 
@@ -153,9 +153,8 @@ export default function Home() {
           <p className="section-index">03 / Notes from the margin</p>
           <h2>Books I argue with, underline and return to.</h2>
           <p>
-            I learn best when an idea survives contact with a real system. These are
-            paraphrased notes from books on my shelf—not quotations, and definitely
-            not a list of rules I follow blindly.
+            I read to sharpen how I think about systems. These are my own paraphrased
+            notes, not quotations from the books.
           </p>
           <aside className="desk-note">
             <span>off-screen interests</span>
@@ -168,7 +167,7 @@ export default function Home() {
       <section className="section stack-section">
         <div>
           <p className="section-index">04 / Working toolkit</p>
-          <h2>Tools are choices.<br />Outcomes are the work.</h2>
+          <h2>Tools I use regularly.</h2>
         </div>
         <div className="stack-list">
           {stack.map((group) => (
@@ -182,8 +181,8 @@ export default function Home() {
 
       <section className="contact section" id="contact">
         <p className="section-index">05 / Start a conversation</p>
-        <h2>Building a platform, improving reliability or untangling a difficult system?</h2>
-        <p>Let&apos;s compare notes.</p>
+        <h2>I am open to senior backend, platform, DevOps and SRE roles.</h2>
+        <p>If my experience fits what your team is building, please get in touch.</p>
         <a className="contact-link" href="https://www.linkedin.com/in/milind-y-27b8a5b6" target="_blank" rel="noreferrer">
           Connect on LinkedIn <span aria-hidden="true">↗</span>
         </a>

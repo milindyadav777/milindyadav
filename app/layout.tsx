@@ -14,12 +14,9 @@ const themeScript = `
 `;
 
 export const metadata: Metadata = {
-  title: "milindyadav — Platform & DevOps Engineer",
+  title: "milindyadav | Platform & DevOps Engineer",
   description:
-    "Portfolio of Milind Yadav, a platform and DevOps engineer building observable systems, dependable delivery platforms and engineering automation.",
-  other: {
-    "codex-preview": "development",
-  },
+    "Milind Yadav is a platform and DevOps engineer with experience in backend systems, CI/CD, Kubernetes, cloud infrastructure and observability.",
   icons: {
     icon: (process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/favicon.svg",
     shortcut: (process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/favicon.svg",
