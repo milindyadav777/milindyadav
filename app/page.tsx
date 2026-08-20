@@ -1,5 +1,6 @@
 import BookCarousel from "./BookCarousel";
-import ThemeToggle from "./ThemeToggle";
+import SiteFooter from "./SiteFooter";
+import SiteHeader from "./SiteHeader";
 
 const capabilities = [
   "Platform engineering",
@@ -53,21 +54,7 @@ const stack = [
 export default function Home() {
   return (
     <main>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="milindyadav, home">
-          <span className="brand-mark" aria-hidden="true">my</span>
-          <span>milindyadav</span>
-        </a>
-        <div className="header-actions">
-          <nav aria-label="Main navigation">
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a href="#reading">Reading</a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <ThemeToggle />
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="hero" id="top">
         <div className="hero-copy">
@@ -188,11 +175,7 @@ export default function Home() {
         </a>
       </section>
 
-      <footer>
-        <a className="brand" href="#top"><span className="brand-mark">my</span><span>milindyadav</span></a>
-        <p>Platform · DevOps · Software Engineering</p>
-        <a href="#top">Back to top ↑</a>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
