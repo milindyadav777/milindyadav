@@ -2,7 +2,7 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 
 type SiteHeaderProps = {
-  activePage?: "home" | "java-memory";
+  activePage?: "home" | "blog";
 };
 
 export default function SiteHeader({ activePage = "home" }: SiteHeaderProps) {
@@ -16,10 +16,10 @@ export default function SiteHeader({ activePage = "home" }: SiteHeaderProps) {
         <nav aria-label="Main navigation">
           <Link
             className="nav-lab"
-            href="/java-memory/"
-            aria-current={activePage === "java-memory" ? "page" : undefined}
+            href="/blog/"
+            aria-current={activePage === "blog" ? "page" : undefined}
           >
-            Java memory
+            Blog
           </Link>
           <Link href="/#work">Work</Link>
           <Link href="/#about">About</Link>
