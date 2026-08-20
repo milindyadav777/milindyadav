@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SiteFooter from "../SiteFooter";
 import SiteHeader from "../SiteHeader";
 import MemoryExplorer from "./MemoryExplorer";
@@ -12,9 +13,10 @@ export const metadata: Metadata = {
 export default function JavaMemoryPage() {
   return (
     <main>
-      <SiteHeader activePage="java-memory" />
+      <SiteHeader activePage="blog" />
 
       <section className="memory-hero" id="top">
+        <Link className="article-back-link" href="/blog/">← All articles</Link>
         <p className="kicker">Java runtime field guide</p>
         <h1>Follow Java code through <em>stack, heap and native memory.</em></h1>
         <p>
