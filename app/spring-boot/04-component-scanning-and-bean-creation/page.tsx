@@ -26,17 +26,17 @@ export default function BeanCreationPage() {
         <p className="section-index">Discovery boundary</p>
         <h2>Component scanning starts at the application package.</h2>
         <p>
-          With <code>MckessonOrdersApplication</code> in{" "}
-          <code>com.mckesson.orders</code>, the default scan searches that package and
+          With <code>OrdersApplication</code> in{" "}
+          <code>com.example.orders</code>, the default scan searches that package and
           every subpackage. It finds classes such as:
         </p>
-        <CodeBlock label="Inside the default scan">{`com.mckesson.orders.notification.EmailNotificationSender
-com.mckesson.orders.service.OrderService
-com.mckesson.orders.configuration.TimeConfiguration
-com.mckesson.orders.runner.DemoRunner`}</CodeBlock>
+        <CodeBlock label="Inside the default scan">{`com.example.orders.notification.EmailNotificationSender
+com.example.orders.service.OrderService
+com.example.orders.configuration.TimeConfiguration
+com.example.orders.runner.DemoRunner`}</CodeBlock>
         <p>
           It does not automatically scan a sibling such as{" "}
-          <code>com.mckesson.payments</code>. Put the application class at a sensible
+          <code>com.example.payments</code>. Put the application class at a sensible
           package root instead of widening the scan without a reason.
         </p>
       </section>
@@ -154,7 +154,7 @@ public OtpService anotherOtpService() {
         }
         solution={
           <>
-            <CodeBlock label="OrderTimestampService.java">{`package com.mckesson.orders.time;
+            <CodeBlock label="OrderTimestampService.java">{`package com.example.orders.time;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -170,7 +170,7 @@ public class OrderTimestampService {
         return applicationClock.instant();
     }
 }`}</CodeBlock>
-            <CodeBlock label="TimeConfiguration.java">{`package com.mckesson.orders.configuration;
+            <CodeBlock label="TimeConfiguration.java">{`package com.example.orders.configuration;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -179,7 +179,7 @@ import java.time.ZoneOffset;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.mckesson.orders.time.OrderTimestampService;
+import com.example.orders.time.OrderTimestampService;
 
 @Configuration(proxyBeanMethods = false)
 public class TimeConfiguration {
@@ -199,14 +199,14 @@ public class TimeConfiguration {
         return new OrderTimestampService(applicationClock);
     }
 }`}</CodeBlock>
-            <CodeBlock label="DemoRunner.java">{`package com.mckesson.orders.runner;
+            <CodeBlock label="DemoRunner.java">{`package com.example.orders.runner;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.mckesson.orders.service.OrderService;
-import com.mckesson.orders.service.OtpService;
-import com.mckesson.orders.time.OrderTimestampService;
+import com.example.orders.service.OrderService;
+import com.example.orders.service.OtpService;
+import com.example.orders.time.OrderTimestampService;
 
 @Component
 public class DemoRunner implements CommandLineRunner {

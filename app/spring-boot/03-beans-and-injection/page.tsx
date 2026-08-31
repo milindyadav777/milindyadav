@@ -54,10 +54,10 @@ export default function BeansAndInjectionPage() {
       <section>
         <p className="section-index">Constructor injection</p>
         <h2>The constructor makes required dependencies explicit.</h2>
-        <CodeBlock label="OrderService.java">{`package com.mckesson.orders.service;
+        <CodeBlock label="OrderService.java">{`package com.example.orders.service;
 
 import org.springframework.stereotype.Service;
-import com.mckesson.orders.notification.NotificationSender;
+import com.example.orders.notification.NotificationSender;
 
 @Service
 public class OrderService {
@@ -126,7 +126,7 @@ public OtpService(
         time="Suggested time: 20 minutes"
         hints={
           <ol>
-            <li>Place every class below <code>com.mckesson.orders</code> so it is scanned.</li>
+            <li>Place every class below <code>com.example.orders</code> so it is scanned.</li>
             <li>Make email <code>@Primary</code>; give SMS the qualifier <code>sms</code>.</li>
             <li>Put <code>@Qualifier(&quot;sms&quot;)</code> on the <code>OtpService</code> constructor parameter.</li>
             <li>Inject both services into a <code>CommandLineRunner</code> component.</li>
@@ -135,14 +135,14 @@ public OtpService(
         solution={
           <>
             <CodeBlock label="notification package">{`// NotificationSender.java
-package com.mckesson.orders.notification;
+package com.example.orders.notification;
 
 public interface NotificationSender {
     void send(String destination, String message);
 }
 
 // EmailNotificationSender.java
-package com.mckesson.orders.notification;
+package com.example.orders.notification;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
@@ -157,7 +157,7 @@ public class EmailNotificationSender implements NotificationSender {
 }
 
 // SmsNotificationSender.java
-package com.mckesson.orders.notification;
+package com.example.orders.notification;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -171,10 +171,10 @@ public class SmsNotificationSender implements NotificationSender {
     }
 }`}</CodeBlock>
             <CodeBlock label="service package">{`// OrderService.java
-package com.mckesson.orders.service;
+package com.example.orders.service;
 
 import org.springframework.stereotype.Service;
-import com.mckesson.orders.notification.NotificationSender;
+import com.example.orders.notification.NotificationSender;
 
 @Service
 public class OrderService {
@@ -193,11 +193,11 @@ public class OrderService {
 }
 
 // OtpService.java
-package com.mckesson.orders.service;
+package com.example.orders.service;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import com.mckesson.orders.notification.NotificationSender;
+import com.example.orders.notification.NotificationSender;
 
 @Service
 public class OtpService {
@@ -213,12 +213,12 @@ public class OtpService {
         notificationSender.send(destination, "OTP: " + otp);
     }
 }`}</CodeBlock>
-            <CodeBlock label="DemoRunner.java">{`package com.mckesson.orders.runner;
+            <CodeBlock label="DemoRunner.java">{`package com.example.orders.runner;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.mckesson.orders.service.OrderService;
-import com.mckesson.orders.service.OtpService;
+import com.example.orders.service.OrderService;
+import com.example.orders.service.OtpService;
 
 @Component
 public class DemoRunner implements CommandLineRunner {

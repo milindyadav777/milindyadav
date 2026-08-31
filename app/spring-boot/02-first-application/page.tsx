@@ -25,16 +25,16 @@ export default function FirstApplicationPage() {
       <section>
         <p className="section-index">Project shape</p>
         <h2>Three files are enough for the first run.</h2>
-        <CodeBlock label="Directory layout">{`mckesson-orders/
+        <CodeBlock label="Directory layout">{`orders/
 ├── pom.xml
 └── src/main/
-    ├── java/com/mckesson/orders/
-    │   └── MckessonOrdersApplication.java
+    ├── java/com/example/orders/
+    │   └── OrdersApplication.java
     └── resources/
         └── application.properties`}</CodeBlock>
         <p>
           The application class sits in the root package{" "}
-          <code>com.mckesson.orders</code>. Later components should live in that package
+          <code>com.example.orders</code>. Later components should live in that package
           or one of its subpackages so the default scan can find them.
         </p>
       </section>
@@ -91,16 +91,16 @@ export default function FirstApplicationPage() {
             </p>
           </div>
         </div>
-        <CodeBlock label="Application entry point">{`package com.mckesson.orders;
+        <CodeBlock label="Application entry point">{`package com.example.orders;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MckessonOrdersApplication {
+public class OrdersApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MckessonOrdersApplication.class, args);
+        SpringApplication.run(OrdersApplication.class, args);
     }
 }`}</CodeBlock>
         <p>
@@ -128,7 +128,7 @@ public class MckessonOrdersApplication {
           <ol>
             <li>Use Java 17 and Spring Boot 4.1.1 as this series&apos; fixed baseline.</li>
             <li>The only runtime starter needed is <code>spring-boot-starter</code>.</li>
-            <li>Keep the application class in <code>com.mckesson.orders</code> and give its file the exact public class name.</li>
+            <li>Keep the application class in <code>com.example.orders</code> and give its file the exact public class name.</li>
           </ol>
         }
         solution={
@@ -147,8 +147,8 @@ public class MckessonOrdersApplication {
         <relativePath/>
     </parent>
 
-    <groupId>com.mckesson</groupId>
-    <artifactId>mckesson-orders</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>orders</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
@@ -176,19 +176,19 @@ public class MckessonOrdersApplication {
         </plugins>
     </build>
 </project>`}</CodeBlock>
-            <CodeBlock label="MckessonOrdersApplication.java">{`package com.mckesson.orders;
+            <CodeBlock label="OrdersApplication.java">{`package com.example.orders;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MckessonOrdersApplication {
+public class OrdersApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MckessonOrdersApplication.class, args);
+        SpringApplication.run(OrdersApplication.class, args);
     }
 }`}</CodeBlock>
-            <CodeBlock label="application.properties">{`spring.application.name=mckesson-orders`}</CodeBlock>
+            <CodeBlock label="application.properties">{`spring.application.name=orders`}</CodeBlock>
             <p>
               Run with <code>mvn spring-boot:run</code>. A successful startup does not
               include Tomcat, Jetty or Netty because no web stack is present.
@@ -198,12 +198,12 @@ public class MckessonOrdersApplication {
       >
         <p>
           From an empty directory, create a minimal Maven Spring Boot application named{" "}
-          <code>mckesson-orders</code>.
+          <code>orders</code>.
         </p>
         <ul>
           <li>Use Spring Boot 4.1.1 and Java 17.</li>
           <li>Do not add a web dependency.</li>
-          <li>Use the package <code>com.mckesson.orders</code>.</li>
+          <li>Use the package <code>com.example.orders</code>.</li>
           <li>Set the application name in properties.</li>
         </ul>
       </Practice>
@@ -212,9 +212,9 @@ public class MckessonOrdersApplication {
         <p className="section-index">Foundation check</p>
         <h2>Where will Spring scan?</h2>
         <p>
-          With the application class in <code>com.mckesson.orders</code>, the default
+          With the application class in <code>com.example.orders</code>, the default
           scan covers that package and its subpackages. A component in{" "}
-          <code>com.mckesson.payments</code> is outside that boundary.
+          <code>com.example.payments</code> is outside that boundary.
         </p>
       </section>
     </SpringLesson>

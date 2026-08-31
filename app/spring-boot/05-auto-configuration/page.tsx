@@ -66,7 +66,7 @@ export default function AutoConfigurationPage() {
         <CodeBlock label="File contents">{`com.example.notification.NotificationAutoConfiguration`}</CodeBlock>
         <p>
           The configuration class is marked <code>@AutoConfiguration</code>. Merely
-          placing it under <code>com.mckesson.orders</code> is not the registration
+          placing it under <code>com.example.orders</code> is not the registration
           mechanism for a reusable auto-configuration.
         </p>
       </section>
