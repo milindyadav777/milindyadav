@@ -20,6 +20,16 @@ const posts = [
     topics: ["Java", "JVM", "HotSpot", "G1", "Memory"],
     format: "Interactive explainer",
   },
+  {
+    number: "02",
+    href: "/spring-boot/",
+    category: "Spring Boot learning series",
+    title: "Spring Boot from First Principles",
+    summary:
+      "Five separate, incremental modules covering dependency injection, the first Boot application, beans, component scanning, explicit bean creation and auto-configuration.",
+    topics: ["Java 17", "Spring Boot", "DI", "Beans", "Auto-configuration"],
+    format: "5-part guided series",
+  },
 ];
 
 export default function BlogPage() {

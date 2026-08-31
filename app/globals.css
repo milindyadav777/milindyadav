@@ -429,6 +429,339 @@ h1 em { color: var(--ink-soft); font-family: Georgia, 'Times New Roman', serif; 
   margin-bottom: 42px;
 }
 
+.spring-series-index {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 94px 0 118px;
+}
+.spring-series-heading {
+  margin-bottom: 54px;
+  display: grid;
+  grid-template-columns: 1.35fr .65fr;
+  gap: 70px;
+  align-items: end;
+}
+.spring-series-heading h2 {
+  max-width: 760px;
+  margin-bottom: 0;
+  font-size: clamp(38px, 4.5vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -.05em;
+}
+.spring-series-heading > p {
+  margin-bottom: 5px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.spring-module-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+.spring-module-list > li {
+  padding: 38px 0;
+  display: grid;
+  grid-template-columns: 58px 1fr 150px;
+  gap: 38px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+}
+.spring-module-number {
+  color: var(--ink-soft);
+  font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.spring-module-list h3 {
+  margin-bottom: 12px;
+  font-size: clamp(25px, 3vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -.04em;
+}
+.spring-module-list h3 a:hover { color: var(--ink-soft); }
+.spring-module-list p {
+  max-width: 720px;
+  margin-bottom: 16px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.spring-module-list small {
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.spring-module-link {
+  justify-self: end;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+.spring-module-link:hover { border-color: var(--accent); }
+
+.spring-lesson-hero {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 84px 0 72px;
+  border-bottom: 1px solid var(--ink);
+}
+.spring-lesson-hero h1 {
+  max-width: 960px;
+  margin-bottom: 28px;
+}
+.spring-lesson-hero > p:not(.kicker) {
+  max-width: 790px;
+  margin-bottom: 0;
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.spring-outcomes {
+  max-width: 790px;
+  margin-top: 34px;
+  padding: 24px 26px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.spring-outcomes strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+.spring-outcomes ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.spring-lesson-shell {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 82px 0 96px;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 78px;
+  align-items: start;
+}
+.spring-series-nav {
+  position: sticky;
+  top: 24px;
+  border-top: 1px solid var(--ink);
+}
+.spring-series-nav > p {
+  margin: 0;
+  padding: 18px 0 14px;
+  color: var(--ink-soft);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.spring-series-nav ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.spring-series-nav li { border-top: 1px solid var(--line); }
+.spring-series-nav li:last-child { border-bottom: 1px solid var(--line); }
+.spring-series-nav a {
+  padding: 13px 8px 13px 0;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.4;
+}
+.spring-series-nav a span {
+  font: 10px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.spring-series-nav li.active a {
+  color: var(--ink);
+  font-weight: 800;
+  box-shadow: inset 3px 0 0 var(--accent);
+  padding-left: 10px;
+}
+.spring-lesson-content {
+  min-width: 0;
+  max-width: 820px;
+}
+.spring-lesson-content > section {
+  padding: 0 0 66px;
+}
+.spring-lesson-content > section + section {
+  padding-top: 66px;
+  border-top: 1px solid var(--line);
+}
+.spring-lesson-content h2 {
+  max-width: 760px;
+  margin-bottom: 24px;
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.05;
+  letter-spacing: -.045em;
+}
+.spring-lesson-content h3 {
+  margin-bottom: 10px;
+  font-size: 17px;
+  line-height: 1.3;
+}
+.spring-lesson-content p,
+.spring-lesson-content li {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.78;
+}
+.spring-lesson-content p { margin-bottom: 22px; }
+.spring-lesson-content ul,
+.spring-lesson-content ol {
+  margin: 0 0 24px;
+  padding-left: 23px;
+}
+.spring-lesson-content code:not(pre code) {
+  padding: 2px 5px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.spring-definition-list {
+  margin: 30px 0 34px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.spring-definition-list > div {
+  padding: 23px 20px;
+  border-right: 1px solid var(--line);
+}
+.spring-definition-list > div:last-child { border-right: 0; }
+.spring-definition-list p {
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.spring-code-block {
+  margin: 30px 0;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--ink);
+  color: var(--panel-text);
+}
+.spring-code-block > span {
+  padding: 11px 16px;
+  display: block;
+  border-bottom: 1px solid var(--panel-line);
+  color: var(--accent);
+  font: 9px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.spring-code-block pre {
+  margin: 0;
+  padding: 22px;
+  overflow-x: auto;
+  font: 12px/1.68 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  tab-size: 4;
+}
+.spring-code-block code { font: inherit; }
+.spring-practice {
+  margin: 4px 0 66px;
+  padding: 36px;
+  background: var(--surface);
+  border: 1px solid var(--ink) !important;
+  box-shadow: 10px 10px 0 var(--accent);
+}
+.spring-practice-heading {
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+}
+.spring-practice-heading .section-index { margin-bottom: 12px; }
+.spring-practice-heading h2 {
+  max-width: 590px;
+  margin-bottom: 0;
+  font-size: clamp(28px, 3.4vw, 42px);
+}
+.spring-practice-heading > span {
+  padding: 8px 10px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 10px;
+  font-weight: 800;
+}
+.spring-practice-task {
+  margin-bottom: 26px;
+  padding-bottom: 8px;
+}
+.spring-practice details {
+  border-top: 1px solid var(--line);
+}
+.spring-practice details:last-child { border-bottom: 1px solid var(--line); }
+.spring-practice summary {
+  padding: 17px 4px;
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+.spring-practice summary:hover { color: var(--ink-soft); }
+.spring-details-body { padding: 5px 4px 24px; }
+.spring-details-body > :last-child { margin-bottom: 0; }
+.spring-practice-score {
+  margin-top: 24px;
+  padding: 18px 20px;
+  background: var(--paper);
+  border-left: 4px solid var(--accent);
+}
+.spring-practice-score strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.spring-practice-score p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.spring-condition-result {
+  padding: 24px;
+  background: var(--heap-tint);
+  border-left: 4px solid var(--ink);
+}
+.spring-condition-result p:last-child { margin-bottom: 0; }
+.spring-recap {
+  padding: 46px !important;
+  background: var(--note);
+  color: var(--note-ink);
+  border-top: 0 !important;
+}
+.spring-recap .section-index,
+.spring-recap h2,
+.spring-recap p { color: inherit; }
+.spring-recap p:last-child { margin-bottom: 0; }
+.spring-lesson-pager {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 36px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.spring-lesson-pager a {
+  font-size: 12px;
+  font-weight: 800;
+}
+.spring-lesson-pager a:last-child { justify-self: end; text-align: right; }
+
 .memory-hero {
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
@@ -784,6 +1117,19 @@ footer > a:last-child { justify-self: end; font-weight: 700; }
     border-left: 0;
     border-top: 1px solid var(--line);
   }
+  .spring-series-heading { grid-template-columns: 1fr; gap: 28px; }
+  .spring-module-list > li { grid-template-columns: 44px 1fr; }
+  .spring-module-link { grid-column: 2; justify-self: start; }
+  .spring-lesson-shell { grid-template-columns: 1fr; gap: 56px; }
+  .spring-series-nav { position: static; }
+  .spring-series-nav ol { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .spring-series-nav li:nth-child(2n) { border-left: 1px solid var(--line); }
+  .spring-definition-list { grid-template-columns: 1fr; }
+  .spring-definition-list > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .spring-definition-list > div:last-child { border-bottom: 0; }
 }
 
 @media (max-width: 620px) {
@@ -824,6 +1170,30 @@ footer > a:last-child { justify-self: end; font-weight: 700; }
   .blog-entry { grid-template-columns: 1fr; gap: 14px; padding: 34px 0; }
   .blog-entry-action { grid-column: 1; }
   .blog-next { padding-top: 76px; padding-bottom: 76px; }
+  .spring-series-index,
+  .spring-lesson-hero,
+  .spring-lesson-shell,
+  .spring-lesson-pager {
+    width: min(100% - 32px, 1180px);
+  }
+  .spring-series-index { padding: 72px 0 84px; }
+  .spring-module-list > li { grid-template-columns: 1fr; gap: 13px; padding: 32px 0; }
+  .spring-module-link { grid-column: 1; }
+  .spring-lesson-hero { padding: 64px 0 56px; }
+  .spring-lesson-hero h1 { font-size: 46px; }
+  .spring-lesson-hero > p:not(.kicker) { font-size: 16px; }
+  .spring-outcomes { padding: 20px; }
+  .spring-lesson-shell { padding: 60px 0 76px; gap: 46px; }
+  .spring-series-nav ol { grid-template-columns: 1fr; }
+  .spring-series-nav li:nth-child(2n) { border-left: 0; }
+  .spring-lesson-content > section { padding-bottom: 52px; }
+  .spring-lesson-content > section + section { padding-top: 52px; }
+  .spring-code-block pre { padding: 18px; font-size: 11px; }
+  .spring-practice { padding: 26px 20px; box-shadow: 7px 7px 0 var(--accent); }
+  .spring-practice-heading { grid-template-columns: 1fr; }
+  .spring-practice-heading > span { justify-self: start; }
+  .spring-recap { padding: 30px 24px !important; }
+  .spring-lesson-pager { padding: 28px 0; }
   .memory-hero, .memory-explorer { width: min(100% - 32px, 1320px); }
   .memory-model-intro { width: min(100% - 32px, 1180px); padding-top: 64px; }
   .memory-model-intro-heading h2 { font-size: 38px; }

@@ -5,6 +5,8 @@ A static portfolio built with Next.js and configured for free hosting on GitHub 
 ## How the website works
 
 - `app/page.tsx` contains the page content and structure.
+- `app/blog/page.tsx` is the technical-article index.
+- `app/spring-boot/` contains the Spring Boot series overview and its separate lesson pages.
 - `app/BookCarousel.tsx` contains the reading-notes carousel.
 - `app/ThemeToggle.tsx` controls the light and dark theme preference.
 - `app/globals.css` controls the visual design and responsive layout.
