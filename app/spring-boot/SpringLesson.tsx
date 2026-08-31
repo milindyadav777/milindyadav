@@ -35,6 +35,25 @@ export function CodeBlock({ children, label }: { children: string; label?: strin
   );
 }
 
+export function ConceptCheck({
+  question,
+  children,
+}: {
+  question: string;
+  children: ReactNode;
+}) {
+  return (
+    <aside className="spring-concept-check">
+      <p className="section-index">Pause and predict</p>
+      <h3>{question}</h3>
+      <details>
+        <summary>Check the reasoning</summary>
+        <div className="spring-details-body">{children}</div>
+      </details>
+    </aside>
+  );
+}
+
 export function Practice({
   time,
   children,

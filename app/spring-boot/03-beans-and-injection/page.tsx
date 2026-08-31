@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SpringLesson, { CodeBlock, Practice } from "../SpringLesson";
+import SpringLesson, { CodeBlock, ConceptCheck, Practice } from "../SpringLesson";
 
 export const metadata: Metadata = {
   title: "03 — Beans and Constructor Injection | Spring Boot Series",
@@ -49,6 +49,65 @@ export default function BeansAndInjectionPage() {
           These stereotypes describe roles; <code>@Service</code> and{" "}
           <code>@Repository</code> are specialised forms of <code>@Component</code>.
         </p>
+        <p>
+          It helps to separate two things that are often both called “a bean.” A{" "}
+          <strong>bean definition</strong> is Spring&apos;s recipe: type, name, scope and
+          construction information. A <strong>bean instance</strong> is the actual Java
+          object created from that recipe.
+        </p>
+        <CodeBlock label="A scanned definition becomes an instance">{`@Service
+public class OrderService {
+    // Spring registers a bean definition while scanning.
+    // During context refresh, it creates the OrderService object.
+}`}</CodeBlock>
+        <div className="spring-example-grid">
+          <div>
+            <h3>Registration phase</h3>
+            <p>
+              Spring scans metadata and records that an <code>OrderService</code> bean
+              can be created.
+            </p>
+          </div>
+          <div>
+            <h3>Instantiation phase</h3>
+            <p>
+              Spring calls the constructor after it has worked out what every parameter
+              should receive.
+            </p>
+          </div>
+        </div>
+        <p>
+          Component scanning does not inject an annotation into the object. It discovers
+          a class, registers a definition, and later creates and wires the object through
+          normal Java constructors.
+        </p>
+      </section>
+
+      <section>
+        <p className="section-index">What makes a bean different?</p>
+        <h2>The Java object is ordinary; container ownership adds behaviour around it.</h2>
+        <CodeBlock label="Manual object">{`OrderService service =
+        new OrderService(notificationSender);`}</CodeBlock>
+        <CodeBlock label="Container-managed object">{`@Service
+public class OrderService {
+    public OrderService(NotificationSender notificationSender) {
+        // Spring calls this same Java constructor.
+    }
+}`}</CodeBlock>
+        <p>
+          Both values are instances of the same Java class. The second is a bean because
+          the context owns its creation, dependency resolution, scope and lifecycle.
+          Annotating a class does not prevent manual construction, although a manually
+          created instance is not automatically registered with Spring.
+        </p>
+        <ConceptCheck question="If code calls new OrderService(...), will @Service make that object a bean?">
+          <p>
+            No. <code>@Service</code> lets scanning register a bean definition. Only the
+            instance created through that definition is container-managed. A separate
+            object created with <code>new</code> remains an ordinary object unless it is
+            explicitly registered.
+          </p>
+        </ConceptCheck>
       </section>
 
       <section>
@@ -72,6 +131,43 @@ public class OrderService {
           it. <code>@Autowired</code> is unnecessary when a class has a single constructor.
           The <code>final</code> field prevents the required dependency from being
           replaced after construction.
+        </p>
+        <CodeBlock label="How Spring reasons about the constructor">{`OrderService(
+    NotificationSender notificationSender
+)
+
+// Question Spring asks:
+// "Which bean in this context can satisfy NotificationSender?"`}</CodeBlock>
+        <p>
+          Injection is primarily type-based. Spring does not care about the local field
+          name when one unique bean satisfies the type. It first identifies the
+          constructor, then resolves each parameter, then invokes the constructor with
+          those instances.
+        </p>
+        <div className="spring-example-grid">
+          <div>
+            <p className="section-index">One constructor</p>
+            <h3>No @Autowired required</h3>
+            <p>Spring uses the only available constructor.</p>
+          </div>
+          <div>
+            <p className="section-index">Several constructors</p>
+            <h3>The choice must be unambiguous</h3>
+            <p>
+              Mark the intended injectable constructor or redesign the alternatives so
+              construction is clear.
+            </p>
+          </div>
+        </div>
+        <CodeBlock label="Why field injection hides information">{`@Service
+public class OrderService {
+    @Autowired
+    private NotificationSender notificationSender;
+}`}</CodeBlock>
+        <p>
+          A normal Java caller can construct this class without setting the field, so the
+          object is temporarily incomplete. The dependency is also absent from the public
+          construction contract. Constructor injection avoids both problems.
         </p>
       </section>
 
@@ -110,6 +206,127 @@ public OtpService(
           name and parameter-name metadata is present. That is a fragile place to encode a
           business rule; use a qualifier when the choice matters.
         </p>
+        <div className="spring-comparison-table-wrap">
+          <table className="spring-comparison-table">
+            <thead>
+              <tr>
+                <th>Candidates for NotificationSender</th>
+                <th>Injection point</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>None</td>
+                <td>Unqualified</td>
+                <td>Startup fails: the required dependency is missing.</td>
+              </tr>
+              <tr>
+                <td>Email only</td>
+                <td>Unqualified</td>
+                <td>Email is injected because the type has one candidate.</td>
+              </tr>
+              <tr>
+                <td>Email + SMS</td>
+                <td>Unqualified</td>
+                <td>Startup fails unless one candidate is preferred.</td>
+              </tr>
+              <tr>
+                <td>Email @Primary + SMS</td>
+                <td>Unqualified</td>
+                <td>Email is injected.</td>
+              </tr>
+              <tr>
+                <td>Email @Primary + SMS @Qualifier(&quot;sms&quot;)</td>
+                <td>@Qualifier(&quot;sms&quot;)</td>
+                <td>SMS is injected; the explicit qualifier narrows the candidates.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Think of <code>@Primary</code> as the answer to “which candidate should be the
+          general default?” Think of <code>@Qualifier</code> as part of the injection
+          point&apos;s requirement: “I need the SMS-flavoured candidate here.”
+        </p>
+        <ConceptCheck question="Does @Primary cause Spring to create the email bean first?">
+          <p>
+            No. Primary affects candidate selection for a single-valued injection point;
+            it is not an eager-ordering annotation. Both email and SMS bean definitions
+            can still exist, and both instances can be created. Primary decides which one
+            is selected when the injection point does not narrow the choice.
+          </p>
+        </ConceptCheck>
+      </section>
+
+      <section>
+        <p className="section-index">Bean names and qualifier labels</p>
+        <h2>A default bean name and a semantic qualifier are related but distinct.</h2>
+        <CodeBlock label="Default names from component classes">{`@Component
+public class EmailNotificationSender { }
+// default bean name: emailNotificationSender
+
+@Component
+@Qualifier("sms")
+public class SmsNotificationSender { }
+// default bean name: smsNotificationSender
+// qualifier metadata: sms`}</CodeBlock>
+        <p>
+          Spring normally converts the class name to lower camel case for the default
+          bean name. <code>@Qualifier(&quot;sms&quot;)</code> adds selection metadata; it does not
+          rename the bean to <code>sms</code>. An injection point with the same qualifier
+          selects candidates carrying that label.
+        </p>
+        <CodeBlock label="Naming a bean is a different operation">{`@Component("smsSender")
+public class SmsNotificationSender
+        implements NotificationSender {
+}
+// explicit bean name: smsSender`}</CodeBlock>
+        <p>
+          Bean-name fallback can occasionally make a parameter named{" "}
+          <code>smsNotificationSender</code> resolve successfully. That couples the
+          choice to a local variable name and compiler metadata. For an intentional
+          business distinction such as “OTP must use SMS,” a qualifier communicates the
+          rule directly.
+        </p>
+        <ConceptCheck question="What if an injection point requests @Qualifier(&quot;push&quot;) but email is @Primary?">
+          <p>
+            Startup fails if no candidate has the <code>push</code> qualifier. The
+            explicit qualifier narrows the acceptable set; <code>@Primary</code> does not
+            override a requirement that no bean satisfies.
+          </p>
+        </ConceptCheck>
+      </section>
+
+      <section>
+        <p className="section-index">Scope and identity</p>
+        <h2>Default singleton means one instance per definition per context.</h2>
+        <CodeBlock label="Two consumers receive the same default bean instance">{`@Service
+class OrderService {
+    OrderService(NotificationSender sender) { /* ... */ }
+}
+
+@Service
+class ReceiptService {
+    ReceiptService(NotificationSender sender) { /* ... */ }
+}
+
+// If email is the selected singleton bean, both constructors
+// receive the same email bean object in this ApplicationContext.`}</CodeBlock>
+        <p>
+          This is a container scope, not a JVM-wide guarantee. A second{" "}
+          <code>ApplicationContext</code> creates its own singleton. Two different bean
+          definitions can also produce two instances of the same Java class.
+        </p>
+        <CodeBlock label="Two definitions, therefore two managed instances">{`@Bean
+NotificationSender customerEmailSender() {
+    return new EmailNotificationSender();
+}
+
+@Bean
+NotificationSender operationsEmailSender() {
+    return new EmailNotificationSender();
+}`}</CodeBlock>
       </section>
 
       <section>
@@ -119,6 +336,17 @@ public OtpService(
           Boot calls every <code>CommandLineRunner</code> after the context has started.
           A runner is useful for this non-web learning application because it lets us
           exercise injected services without manually asking the context for them.
+        </p>
+        <CodeBlock label="The container creates the whole path">{`EmailNotificationSender
+        ↓ injected into
+OrderService
+        ↓ injected into
+DemoRunner
+        ↓ invoked by Boot after startup`}</CodeBlock>
+        <p>
+          If any arrow cannot be resolved, the context fails before{" "}
+          <code>DemoRunner.run</code> is called. That fail-fast behaviour keeps an
+          application from accepting work with an incomplete object graph.
         </p>
       </section>
 

@@ -643,6 +643,137 @@ h1 em { color: var(--ink-soft); font-family: Georgia, 'Times New Roman', serif; 
   font-size: 13px;
   line-height: 1.65;
 }
+.spring-example-grid {
+  margin: 30px 0 34px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.spring-example-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.spring-example-grid > div {
+  min-width: 0;
+  padding: 24px 22px;
+  border-right: 1px solid var(--line);
+}
+.spring-example-grid > div:last-child { border-right: 0; }
+.spring-example-grid .section-index { margin-bottom: 11px; }
+.spring-example-grid h3 { margin-bottom: 10px; }
+.spring-example-grid p {
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 1.68;
+}
+.spring-example-grid .spring-code-block { margin: 16px 0; }
+.spring-flow-list {
+  margin: 34px 0 !important;
+  padding: 0 !important;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+.spring-flow-list > li {
+  padding: 22px 0;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.spring-flow-list > li > span {
+  color: var(--ink-soft);
+  font: 10px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.spring-flow-list h3 { margin-bottom: 6px; }
+.spring-flow-list p {
+  max-width: 690px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.spring-comparison-table-wrap {
+  margin: 30px 0 34px;
+  overflow-x: auto;
+}
+.spring-comparison-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  border-top: 1px solid var(--ink);
+}
+.spring-comparison-table th,
+.spring-comparison-table td {
+  padding: 17px 18px 18px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: left;
+  vertical-align: top;
+}
+.spring-comparison-table th {
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.spring-concept-check {
+  margin: 34px 0;
+  padding: 26px 28px;
+  background: var(--class-tint);
+  border-left: 4px solid var(--ink);
+}
+.spring-concept-check .section-index { margin-bottom: 10px; }
+.spring-concept-check h3 {
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+.spring-concept-check details { border-top: 1px solid var(--line); }
+.spring-concept-check summary {
+  padding: 15px 0 3px;
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+.spring-concept-check .spring-details-body { padding: 16px 0 0; }
+.spring-concept-check .spring-details-body > :last-child { margin-bottom: 0; }
+.spring-scenario-list {
+  margin: 32px 0 34px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--line);
+}
+.spring-scenario-list > div {
+  padding: 26px 24px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.spring-scenario-list span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--ink-soft);
+  font: 9px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.spring-scenario-list p {
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 1.68;
+}
+.spring-mistake-note {
+  margin: 30px 0;
+  padding: 24px 26px;
+  background: var(--note);
+  border: 1px solid var(--line);
+  color: var(--note-ink);
+}
+.spring-mistake-note h3,
+.spring-mistake-note p { color: inherit; }
+.spring-mistake-note p:last-child { margin-bottom: 0; }
 .spring-code-block {
   margin: 30px 0;
   overflow: hidden;
@@ -1130,6 +1261,12 @@ footer > a:last-child { justify-self: end; font-weight: 700; }
     border-bottom: 1px solid var(--line);
   }
   .spring-definition-list > div:last-child { border-bottom: 0; }
+  .spring-example-grid-three { grid-template-columns: 1fr; }
+  .spring-example-grid-three > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .spring-example-grid-three > div:last-child { border-bottom: 0; }
 }
 
 @media (max-width: 620px) {
@@ -1186,6 +1323,15 @@ footer > a:last-child { justify-self: end; font-weight: 700; }
   .spring-lesson-shell { padding: 60px 0 76px; gap: 46px; }
   .spring-series-nav ol { grid-template-columns: 1fr; }
   .spring-series-nav li:nth-child(2n) { border-left: 0; }
+  .spring-example-grid,
+  .spring-scenario-list { grid-template-columns: 1fr; }
+  .spring-example-grid > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .spring-example-grid > div:last-child { border-bottom: 0; }
+  .spring-concept-check { padding: 22px 20px; }
+  .spring-scenario-list > div { border-right: 0; }
   .spring-lesson-content > section { padding-bottom: 52px; }
   .spring-lesson-content > section + section { padding-top: 52px; }
   .spring-code-block pre { padding: 18px; font-size: 11px; }
